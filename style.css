@@ -1,0 +1,130 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4A90E2; /* A shade of blue for the APICI theme */
+    margin: 0;
+}
+
+h2 {
+    font-size: 1rem;
+    color: #888;
+    margin-top: 0;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#feelingInput {
+    padding: 0.75rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px 0 0 8px;
+    font-size: 1rem;
+    width: 70%;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#feelingInput:focus {
+    border-color: #4A90E2;
+}
+
+#generateBtn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #4A90E2;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#generateBtn:hover {
+    background-color: #357ABD;
+}
+
+.result-container {
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    text-align: left;
+}
+
+.color-swatch {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-right: 1.5rem;
+    border: 1px solid #ccc;
+}
+
+.color-info {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.details {
+    flex: 1;
+}
+
+.details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #4A90E2;
+}
+
+.details p {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.details .hex-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #555;
+    background-color: #f7f7f7;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.not-found {
+    color: #ff4d4f;
+    font-weight: bold;
+    text-align: center;
+}
