@@ -1,7 +1,14 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    background-color: #e9ebea;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.05) 0,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 10px
+    );
+    color: #3b4252;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,13 +33,13 @@ header {
 .logo {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #4A90E2; /* A shade of blue for the APICI theme */
+    color: #f89623;
     margin: 0;
 }
 
 h2 {
     font-size: 1rem;
-    color: #888;
+    color: #3b4252;
     margin-top: 0;
 }
 
@@ -58,13 +65,13 @@ p {
 }
 
 #feelingInput:focus {
-    border-color: #4A90E2;
+    border-color: #5caaaa; /* New accent color for focus */
 }
 
 #generateBtn {
     padding: 0.75rem 1.5rem;
     border: none;
-    background-color: #4A90E2;
+    background-color: #f89623;
     color: #fff;
     font-size: 1rem;
     font-weight: 700;
@@ -74,7 +81,7 @@ p {
 }
 
 #generateBtn:hover {
-    background-color: #357ABD;
+    background-color: #e4861e; /* A slightly darker shade of orange */
 }
 
 .result-container {
@@ -104,7 +111,7 @@ p {
 .details h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.5rem;
-    color: #4A90E2;
+    color: #5caaaa; /* New accent color for the color name */
 }
 
 .details p {
@@ -116,8 +123,8 @@ p {
 .details .hex-code {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    color: #555;
-    background-color: #f7f7f7;
+    color: #3b4252;
+    background-color: #e9ebea;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     display: inline-block;
