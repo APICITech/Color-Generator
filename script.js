@@ -1,124 +1,397 @@
-// This array contains all the color data for your project.
-const data = [
-    { category: 'Energy', name: 'Vibrant Coral', hex: '#FF6347', description: 'Vibrant coral orange for a burst of energy.' },
-    { category: 'Energy', name: 'Bright Orange', hex: '#FFA500', description: 'Bright orange that evokes warmth and excitement.' },
-    { category: 'Energy', name: 'Golden Yellow', hex: '#FFD700', description: 'Golden yellow, symbolizing optimism and happiness.' },
-    { category: 'Energy', name: 'Intense Orange-Red', hex: '#FF4500', description: 'Intense orange-red, representing passion and vitality.' },
-    { category: 'Energy', name: 'Deep Orange', hex: '#FF8C00', description: 'A bold, deep orange for high-energy moments.' },
+// APICI Color Generator - Enhanced JavaScript
+// Combining emotion mapping with comprehensive color database
 
-    { category: 'Calm', name: 'Soft Sea Green', hex: '#20B2AA', description: 'Soft sea green for a tranquil, peaceful feel.' },
-    { category: 'Calm', name: 'Light Sky Blue', hex: '#87CEFA', description: 'Light sky blue that promotes a sense of serenity.' },
-    { category: 'Calm', name: 'Powder Blue', hex: '#ADD8E6', description: 'A gentle powder blue, perfect for relaxation.' },
-    { category: 'Calm', name: 'Pale Turquoise', hex: '#B0E0E6', description: 'Pale turquoise, like a calm, shallow sea.' },
-    { category: 'Calm', name: 'Soothing Cyan', hex: '#AFEEEE', description: 'A soothing pale cyan, ideal for a quiet space.' },
+// Enhanced emotion-to-color mapping with variations
+const emotionDatabase = {
+    // Direct emotion mappings (your original concept)
+    "calm": [
+        { hex: "#ADD8E6", name: "Light Blue", description: "Represents serenity, stability, and peace. Creates a tranquil and soothing atmosphere.", category: "Primary" },
+        { hex: "#87CEFA", name: "Light Sky Blue", description: "Promotes a sense of serenity and openness.", category: "Variation" },
+        { hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" }
+    ],
+    "happy": [
+        { hex: "#FFD700", name: "Gold", description: "Symbolizes joy, energy, and optimism. Associated with sunlight and positivity.", category: "Primary" },
+        { hex: "#FFFF00", name: "Bright Yellow", description: "The quintessential color of happiness and cheerfulness.", category: "Variation" },
+        { hex: "#F0E68C", name: "Khaki", description: "A softer, more subtle expression of joy.", category: "Variation" }
+    ],
+    "passion": [
+        { hex: "#FF4500", name: "Orange Red", description: "Fiery and intense, representing strong emotion and desire.", category: "Primary" },
+        { hex: "#DC143C", name: "Crimson", description: "Vivid red symbolizing intense passion and energy.", category: "Variation" },
+        { hex: "#B22222", name: "Firebrick", description: "Deep red representing raw power and intensity.", category: "Variation" }
+    ],
+    "love": [
+        { hex: "#FF69B4", name: "Hot Pink", description: "Playful color associated with romance and affection.", category: "Primary" },
+        { hex: "#FF1493", name: "Deep Pink", description: "Vibrant emotion and romantic energy.", category: "Variation" },
+        { hex: "#FFC0CB", name: "Pink", description: "Gentle expression of love and tenderness.", category: "Variation" }
+    ],
+    "sadness": [
+        { hex: "#36454F", name: "Charcoal Gray", description: "Conveys reflection and contemplative mood.", category: "Primary" },
+        { hex: "#2F4F4F", name: "Dark Slate Gray", description: "Grounding presence for serious contemplation.", category: "Variation" },
+        { hex: "#696969", name: "Dim Gray", description: "Subtle color hinting at melancholy.", category: "Variation" }
+    ],
+    "mystery": [
+        { hex: "#4B0082", name: "Indigo", description: "Represents the unknown, intuition, and depth.", category: "Primary" },
+        { hex: "#000000", name: "Black", description: "Classic color of mystery and intrigue.", category: "Variation" },
+        { hex: "#483D8B", name: "Dark Slate Blue", description: "Shadowy and mysterious atmosphere.", category: "Variation" }
+    ],
+    "anger": [
+        { hex: "#B22222", name: "Firebrick", description: "Symbolizes intensity, aggression, and power.", category: "Primary" },
+        { hex: "#8B0000", name: "Dark Red", description: "Deep, powerful expression of anger.", category: "Variation" },
+        { hex: "#A52A2A", name: "Brown", description: "Earthy intensity and grounded anger.", category: "Variation" }
+    ],
+    "fear": [
+        { hex: "#808000", name: "Olive", description: "Represents tension and unease.", category: "Primary" },
+        { hex: "#556B2F", name: "Dark Olive Green", description: "Darker expression of anxiety and worry.", category: "Variation" },
+        { hex: "#6B8E23", name: "Olive Drab", description: "Military-inspired color evoking tension.", category: "Variation" }
+    ],
+    "courage": [
+        { hex: "#A0522D", name: "Sienna", description: "Signifies strength, resilience, and earthiness.", category: "Primary" },
+        { hex: "#CD853F", name: "Peru", description: "Warm, dependable color for overcoming challenges.", category: "Variation" },
+        { hex: "#D2691E", name: "Chocolate", description: "Rich, solid color representing determination.", category: "Variation" }
+    ],
+    
+    // Extended emotion mappings for richer experience
+    "joy": [
+        { hex: "#FFD700", name: "Gold", description: "Pure joy and celebration.", category: "Primary" },
+        { hex: "#FFFF00", name: "Yellow", description: "Bright, cheerful expression of happiness.", category: "Variation" }
+    ],
+    "serenity": [
+        { hex: "#B0C4DE", name: "Light Steel Blue", description: "Quiet reflection and inner peace.", category: "Primary" },
+        { hex: "#E6E6FA", name: "Lavender", description: "Gentle, calming presence.", category: "Variation" }
+    ],
+    "creativity": [
+        { hex: "#9932CC", name: "Dark Orchid", description: "Inspiring unique and imaginative thoughts.", category: "Primary" },
+        { hex: "#FF00FF", name: "Magenta", description: "Bold ideas and innovation.", category: "Variation" }
+    ],
+    "wisdom": [
+        { hex: "#4B0082", name: "Indigo", description: "Associated with intuition and deep knowledge.", category: "Primary" },
+        { hex: "#800080", name: "Purple", description: "Traditional color of wisdom and royalty.", category: "Variation" }
+    ],
+    "elegance": [
+        { hex: "#C0C0C0", name: "Silver", description: "Sophisticated and refined.", category: "Primary" },
+        { hex: "#A9A9A9", name: "Dark Gray", description: "Timeless elegance.", category: "Variation" }
+    ]
+};
 
-    { category: 'Focus', name: 'Steel Blue', hex: '#4682B4', description: 'A solid steel blue for concentration and stability.' },
-    { category: 'Focus', name: 'Deep Teal', hex: '#008080', description: 'Deep teal, providing clarity and mental focus.' },
-    { category: 'Focus', name: 'Midnight Blue', hex: '#191970', description: 'Midnight blue, for a serious, focused environment.' },
-    { category: 'Focus', name: 'Dark Blue', hex: '#00008B', description: 'Dark blue that suggests deep thought and discipline.' },
-    { category: 'Focus', name: 'Dark Slate Gray', hex: '#2F4F4F', description: 'A dark slate gray, offering a solid, grounding presence.' },
+// Synonym mapping for better emotion recognition
+const emotionSynonyms = {
+    // Happy variations
+    "joyful": "happy", "cheerful": "happy", "excited": "happy", "elated": "happy", "euphoric": "happy",
+    "blissful": "joy", "delighted": "joy", "jubilant": "joy",
+    
+    // Calm variations
+    "peaceful": "calm", "tranquil": "calm", "serene": "serenity", "relaxed": "calm", "zen": "calm",
+    "meditation": "serenity", "mindful": "serenity",
+    
+    // Love variations
+    "romance": "love", "affection": "love", "adoration": "love", "devotion": "love",
+    
+    // Passion variations
+    "intense": "passion", "fiery": "passion", "burning": "passion", "desire": "passion",
+    
+    // Sadness variations
+    "melancholy": "sadness", "sorrow": "sadness", "grief": "sadness", "blue": "sadness", "down": "sadness",
+    
+    // Anger variations
+    "rage": "anger", "fury": "anger", "mad": "anger", "irritated": "anger", "frustrated": "anger",
+    
+    // Fear variations
+    "scared": "fear", "afraid": "fear", "terror": "fear", "anxiety": "fear", "worried": "fear", "nervous": "fear",
+    
+    // Mystery variations
+    "enigma": "mystery", "unknown": "mystery", "secret": "mystery", "hidden": "mystery",
+    
+    // Courage variations
+    "brave": "courage", "bold": "courage", "fearless": "courage", "strength": "courage", "heroic": "courage",
+    
+    // Creative variations
+    "artistic": "creativity", "imaginative": "creativity", "innovative": "creativity", "inspired": "creativity"
+};
 
-    { category: 'Passion', name: 'Vivid Crimson', hex: '#DC143C', description: 'Vivid crimson red, symbolizing intense passion.' },
-    { category: 'Passion', name: 'Hot Pink', hex: '#FF1493', description: 'A hot pink, full of romance and vibrant emotion.' },
-    { category: 'Passion', name: 'Deep Burgundy', hex: '#8B0000', description: 'A deep burgundy, representing powerful, sensual feelings.' },
-    { category: 'Passion', name: 'Earthy Red-Brown', hex: '#A52A2A', description: 'Rich reddish-brown, for a sense of deep, earthy passion.' },
-    { category: 'Passion', name: 'Fiery Brick Red', hex: '#B22222', description: 'A fiery brick red, full of warmth and ardor.' },
+// Get DOM elements
+const feelingInput = document.getElementById('feelingInput');
+const generateBtn = document.getElementById('generateBtn');
+const resultContainer = document.getElementById('resultContainer');
+const form = document.querySelector('.input-group');
 
-    { category: 'Joy', name: 'Bright Yellow', hex: '#FFFF00', description: 'Bright yellow, the quintessential color of happiness.' },
-    { category: 'Joy', name: 'Muted Khaki', hex: '#F0E68C', description: 'A muted khaki yellow for soft, subtle joy.' },
-    { category: 'Joy', name: 'Light Lavender', hex: '#E6E6FA', description: 'Light lavender, a playful color that brings delight.' },
-    { category: 'Joy', name: 'Dark Khaki', hex: '#BDB76B', description: 'A dark khaki color, for a rustic, grounded joy.' },
-    { category: 'Joy', name: 'Pale Goldenrod', hex: '#FAFAD2', description: 'A pale goldenrod that brings a gentle, joyful glow.' },
+// Initialize the application
+function initializeApp() {
+    // Add event listeners
+    form.addEventListener('submit', handleFormSubmit);
+    generateBtn.addEventListener('click', handleGenerate);
+    feelingInput.addEventListener('keydown', handleKeyPress);
+    feelingInput.addEventListener('input', handleInputChange);
+    
+    // Add some visual feedback
+    generateBtn.style.cursor = 'pointer';
+    feelingInput.focus(); // Focus on input when page loads
+}
 
-    { category: 'Serenity', name: 'Soft Light Blue', hex: '#B0C4DE', description: 'A soft, light blue, for quiet reflection and peace.' },
-    { category: 'Serenity', name: 'Lavender Blush', hex: '#E6E6FA', description: 'Lavender blush, a very gentle and calming shade.' },
-    { category: 'Serenity', name: 'Pale Turquoise', hex: '#AFEEEE', description: 'Pale turquoise, evoking the serenity of a quiet lagoon.' },
-    { category: 'Serenity', name: 'Thistle', hex: '#D8BFD8', description: 'Thistle, a soft, purplish color for serene moments.' },
-    { category: 'Serenity', name: 'Plum', hex: '#DDA0DD', description: 'Plum, a deep yet calm purple for tranquil feelings.' },
+// Handle form submission
+function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+    generateColor();
+}
 
-    { category: 'Creativity', name: 'Dark Orchid', hex: '#9932CC', description: 'Dark orchid, inspiring unique and imaginative thoughts.' },
-    { category: 'Creativity', name: 'Vivid Magenta', hex: '#FF00FF', description: 'Vivid magenta, encouraging innovation and bold ideas.' },
-    { category: 'Creativity', name: 'Orchid', hex: '#DA70D6', description: 'Orchid, a soft purple that sparks creative energy.' },
-    { category: 'Creativity', name: 'Blue Violet', hex: '#8A2BE2', description: 'Blue violet, a color that blends calm with creativity.' },
-    { category: 'Creativity', name: 'Slate Blue', hex: '#6A5ACD', description: 'Slate blue, for a balanced and focused creative process.' },
+// Handle generate button click
+function handleGenerate(event) {
+    event.preventDefault();
+    generateColor();
+}
 
-    { category: 'Mystery', name: 'Pure Black', hex: '#000000', description: 'Pure black, the classic color of mystery and intrigue.' },
-    { category: 'Mystery', name: 'Indigo', hex: '#4B0082', description: 'Indigo, a deep, enigmatic color for contemplation.' },
-    { category: 'Mystery', name: 'Dark Slate Blue', hex: '#483D8B', description: 'Dark slate blue, offering a shadowy and mysterious vibe.' },
-    { category: 'Mystery', name: 'Charcoal', hex: '#1C1C1C', description: 'A very dark charcoal, subtle and full of secrets.' },
-    { category: 'Mystery', name: 'Dim Gray', hex: '#696969', description: 'Dim gray, a color that hints at hidden depths.' },
-
-    { category: 'Wisdom', name: 'Deep Indigo', hex: '#4B0082', description: 'Deep indigo, associated with intuition and knowledge.' },
-    { category: 'Wisdom', name: 'Purple', hex: '#800080', description: 'Purple, traditionally linked to wisdom and royalty.' },
-    { category: 'Wisdom', name: 'Medium Purple', hex: '#663399', description: 'A rich medium purple for a sense of deep thought.' },
-    { category: 'Wisdom', name: 'Dark Slate Blue', hex: '#483D8B', description: 'Dark slate blue, symbolizing thoughtful reflection.' },
-    { category: 'Wisdom', name: 'Slate Gray', hex: '#708090', description: 'Slate gray, a calm and wise color.' },
-
-    { category: 'Elegance', name: 'Silver', hex: '#C0C0C0', description: 'Silver, a classic choice for elegance and sophistication.' },
-    { category: 'Elegance', name: 'Dark Gray', hex: '#A9A9A9', description: 'Dark gray, timeless and refined.' },
-    { category: 'Elegance', name: 'Beige', hex: '#F5F5DC', description: 'Beige, a neutral, sophisticated background color.' },
-    { category: 'Elegance', name: 'Tan', hex: '#D2B48C', description: 'Tan, a soft color that suggests understated elegance.' },
-    { category: 'Elegance', name: 'Rosy Brown', hex: '#BC8F8F', description: 'Rosy brown, a warm and delicate color.' }
-];
-
-// Get the search bar and color container elements
-const searchInput = document.getElementById('search-input');
-const colorContainer = document.getElementById('color-container');
-
-// Function to filter and display colors
-function filterAndDisplayColors(searchTerm) {
-    // Clear any previously displayed colors
-    colorContainer.innerHTML = '';
-
-    // Filter the data based on the search term
-    const filteredColors = data.filter(item => {
-        return item.category.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-
-    // Loop through the filtered results and display each color
-    if (filteredColors.length > 0) {
-        filteredColors.forEach(color => {
-          
-            const colorBox = document.createElement('div');
-            colorBox.classList.add('color-box');
-            
-const colorHeader = document.createElement('div');
-            colorHeader.classList.add('color-header');          
-          
-            const colorSwatch = document.createElement('div');
-            colorSwatch.classList.add('color-swatch');
-            colorSwatch.style.backgroundColor = color.hex;
-          
-          const colorHex = document.createElement('p');
-            colorHex.classList.add('color-hex');
-            colorHex.textContent = color.hex;
-          
-          const colorName = document.createElement('p');
-            colorName.classList.add('color-name');
-            colorName.textContent = color.name;
-          
-            const colorDescription = document.createElement('p');
-            colorDescription.classList.add('color-description');
-            colorDescription.textContent = color.description;
-  
- colorBox.appendChild(colorName);
- colorBox.appendChild(colorHex);         
- colorBox.appendChild(colorSwatch);
- colorBox.appendChild(colorDescription);
-          
-            colorContainer.appendChild(colorBox);
-        });
-    } else {
-        colorContainer.innerHTML = `<p>No colors found for "${searchTerm}".</p>`;
+// Handle Enter key press
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        generateColor();
     }
 }
 
-// Add an event listener to the search bar for live filtering
-searchInput.addEventListener('input', function() {
-    filterAndDisplayColors(this.value);
-});
+// Handle input changes for real-time feedback
+function handleInputChange() {
+    const input = feelingInput.value.trim();
+    
+    // Clear previous results if input is empty
+    if (!input) {
+        resultContainer.innerHTML = '';
+        return;
+    }
+    
+    // Visual feedback - change border color if emotion is recognized
+    const normalizedEmotion = normalizeEmotion(input);
+    if (emotionDatabase[normalizedEmotion]) {
+        feelingInput.style.borderColor = '#4CAF50'; // Green for valid
+    } else {
+        feelingInput.style.borderColor = '#ddd'; // Default
+    }
+}
 
-// Call the function once the page loads to display all colors by default
-window.addEventListener('load', () => {
-    filterAndDisplayColors('');
-});
+// Normalize emotion input (handle synonyms, variations)
+function normalizeEmotion(input) {
+    const cleaned = input.toLowerCase().trim();
+    
+    // Check if it's a direct match
+    if (emotionDatabase[cleaned]) {
+        return cleaned;
+    }
+    
+    // Check synonyms
+    if (emotionSynonyms[cleaned]) {
+        return emotionSynonyms[cleaned];
+    }
+    
+    // Check for partial matches
+    for (let emotion in emotionDatabase) {
+        if (emotion.includes(cleaned) || cleaned.includes(emotion)) {
+            return emotion;
+        }
+    }
+    
+    return null;
+}
+
+// Main color generation function
+function generateColor() {
+    const feeling = feelingInput.value.trim();
+    
+    if (!feeling) {
+        showError("Please enter an emotion or feeling.");
+        return;
+    }
+    
+    const normalizedEmotion = normalizeEmotion(feeling);
+    
+    if (normalizedEmotion && emotionDatabase[normalizedEmotion]) {
+        displayColorPalette(normalizedEmotion, emotionDatabase[normalizedEmotion]);
+        feelingInput.style.borderColor = '#4CAF50';
+    } else {
+        displaySuggestions(feeling);
+        feelingInput.style.borderColor = '#ff6b6b';
+    }
+}
+
+// Display color palette for recognized emotion
+function displayColorPalette(emotion, colors) {
+    const primaryColor = colors[0]; // First color is primary
+    const variations = colors.slice(1); // Rest are variations
+    
+    const resultHTML = `
+        <div class="color-result" role="group" aria-labelledby="color-heading">
+            <h3 id="color-heading" class="emotion-title">${capitalizeFirst(emotion)}</h3>
+            
+            <div class="primary-color">
+                <div class="color-swatch large" style="background-color: ${primaryColor.hex};" 
+                     role="img" aria-label="Primary color swatch: ${primaryColor.name}"></div>
+                <div class="color-details">
+                    <h4 class="color-name">${primaryColor.name}</h4>
+                    <p class="hex-code" title="Click to copy">${primaryColor.hex}</p>
+                    <p class="color-description">${primaryColor.description}</p>
+                </div>
+            </div>
+            
+            ${variations.length > 0 ? `
+                <div class="color-variations">
+                    <h4>Variations</h4>
+                    <div class="variation-grid">
+                        ${variations.map(color => `
+                            <div class="variation-item">
+                                <div class="color-swatch small" style="background-color: ${color.hex};"
+                                     role="img" aria-label="Color variation: ${color.name}"></div>
+                                <div class="variation-info">
+                                    <p class="color-name">${color.name}</p>
+                                    <p class="hex-code" title="Click to copy">${color.hex}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <div class="action-buttons">
+                <button class="copy-palette-btn" onclick="copyPalette('${emotion}')">Copy Palette</button>
+                <button class="new-emotion-btn" onclick="clearAndFocus()">Try Another</button>
+            </div>
+        </div>
+    `;
+    
+    resultContainer.innerHTML = resultHTML;
+    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    // Add click listeners for hex codes
+    addHexCodeCopyListeners();
+}
+
+// Display suggestions for unrecognized emotions
+function displaySuggestions(input) {
+    const suggestions = getSuggestions(input);
+    
+    const resultHTML = `
+        <div class="no-match-result">
+            <div class="not-found-message">
+                <h3>Hmm, I don't recognize "${input}" yet</h3>
+                <p>But I'm learning! Here are some emotions I know:</p>
+            </div>
+            
+            <div class="suggestions">
+                ${suggestions.map(emotion => `
+                    <button class="suggestion-btn" onclick="tryEmotion('${emotion}')">
+                        ${capitalizeFirst(emotion)}
+                    </button>
+                `).join('')}
+            </div>
+            
+            <div class="help-text">
+                <p>💡 Try emotions like: happy, calm, passionate, mysterious, or creative</p>
+            </div>
+        </div>
+    `;
+    
+    resultContainer.innerHTML = resultHTML;
+}
+
+// Get emotion suggestions based on input
+function getSuggestions(input) {
+    const allEmotions = Object.keys(emotionDatabase);
+    const suggestions = [];
+    
+    // Find emotions that might be similar
+    for (let emotion of allEmotions) {
+        if (emotion.includes(input.toLowerCase()) || 
+            input.toLowerCase().includes(emotion) ||
+            levenshteinDistance(input.toLowerCase(), emotion) <= 2) {
+            suggestions.push(emotion);
+        }
+    }
+    
+    // If no similar emotions, return random popular ones
+    if (suggestions.length === 0) {
+        const popular = ['happy', 'calm', 'love', 'passion', 'mystery', 'joy'];
+        return popular.slice(0, 4);
+    }
+    
+    return suggestions.slice(0, 6);
+}
+
+// Simple string distance calculation
+function levenshteinDistance(str1, str2) {
+    const matrix = [];
+    for (let i = 0; i <= str2.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= str1.length; j++) {
+        matrix[0][j] = j;
+    }
+    for (let i = 1; i <= str2.length; i++) {
+        for (let j = 1; j <= str1.length; j++) {
+            if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j] + 1
+                );
+            }
+        }
+    }
+    return matrix[str2.length][str1.length];
+}
+
+// Utility functions
+function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function showError(message) {
+    resultContainer.innerHTML = `<div class="error-message">${message}</div>`;
+}
+
+function addHexCodeCopyListeners() {
+    const hexCodes = resultContainer.querySelectorAll('.hex-code');
+    hexCodes.forEach(hexElement => {
+        hexElement.style.cursor = 'pointer';
+        hexElement.addEventListener('click', () => copyToClipboard(hexElement.textContent));
+    });
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Show temporary feedback
+        const feedback = document.createElement('div');
+        feedback.textContent = 'Copied!';
+        feedback.style.position = 'fixed';
+        feedback.style.background = '#4CAF50';
+        feedback.style.color = 'white';
+        feedback.style.padding = '8px 16px';
+        feedback.style.borderRadius = '4px';
+        feedback.style.top = '20px';
+        feedback.style.right = '20px';
+        feedback.style.zIndex = '1000';
+        document.body.appendChild(feedback);
+        
+        setTimeout(() => document.body.removeChild(feedback), 2000);
+    });
+}
+
+// Global functions for button interactions
+function tryEmotion(emotion) {
+    feelingInput.value = emotion;
+    generateColor();
+}
+
+function clearAndFocus() {
+    feelingInput.value = '';
+    feelingInput.focus();
+    resultContainer.innerHTML = '';
+    feelingInput.style.borderColor = '#ddd';
+}
+
+function copyPalette(emotion) {
+    const colors = emotionDatabase[emotion];
+    const paletteText = `${capitalizeFirst(emotion)} Color Palette:\n` +
+        colors.map(color => `${color.name}: ${color.hex}`).join('\n');
+    copyToClipboard(paletteText);
+}
+
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeApp);
