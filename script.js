@@ -7,12 +7,15 @@ const emotionDatabase = {
     "calm": [
         { hex: "#ADD8E6", name: "Light Blue", description: "Represents serenity, stability, and peace. Creates a tranquil and soothing atmosphere.", category: "Primary" },
         { hex: "#87CEFA", name: "Light Sky Blue", description: "Promotes a sense of serenity and openness.", category: "Variation" },
+	    { hex: "#87CEEB", name: "Sky Blue", description: "Refreshing, airy calmness.", category: "Variation" },
+	    { hex: "#4682B4", name: "Steel Blue",description: "Grounded stillness and reflection.", category: "Variation" },
         { hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" }
     ],
     "happy": [
         { hex: "#FFD700", name: "Gold", description: "Symbolizes joy, energy, and optimism. Associated with sunlight and positivity.", category: "Primary" },
         { hex: "#FFFF00", name: "Bright Yellow", description: "The quintessential color of happiness and cheerfulness.", category: "Variation" },
-        { hex: "#F0E68C", name: "Khaki", description: "A softer, more subtle expression of joy.", category: "Variation" }
+        { hex: "#F0E68C", name: "Khaki", description: "A softer, more subtle expression of joy.", category: "Variation" },
+        { hex: "#FFEA00", name: "Sunshine Yellow", description: "Radiant happiness and excitement.", category: "Variation" }
     ],
     "passion": [
         { hex: "#FF4500", name: "Orange Red", description: "Fiery and intense, representing strong emotion and desire.", category: "Primary" },
@@ -240,6 +243,7 @@ function displayColorPalette(emotion, colors) {
                                 <div class="variation-info">
                                     <p class="color-name">${color.name}</p>
                                     <p class="hex-code" title="Click to copy">${color.hex}</p>
+                                    <p class="color-description">${color.description}</p>
                                 </div>
                             </div>
                         `).join('')}
