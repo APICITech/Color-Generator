@@ -387,12 +387,13 @@ main {
 
 .variation-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background: var(--color-white);
   padding: var(--spacing-md);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
+  min-height: 120px;
 }
 
 .variation-item:hover {
@@ -407,11 +408,20 @@ main {
 .variation-info .color-name {
   font-size: 1rem;
   margin: 0 0 var(--spacing-xs) 0;
+  font-weight: 600;
 }
 
 .variation-info .hex-code {
   font-size: 0.9rem;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.variation-info .color-description {
+  font-size: 0.85rem;
+  color: var(--color-medium-gray);
+  line-height: 1.4;
   margin: 0;
+  font-style: italic;
 }
 
 /* Action Buttons */
