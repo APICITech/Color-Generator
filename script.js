@@ -4,80 +4,149 @@
 // Enhanced emotion-to-color mapping with variations
 const emotionDatabase = {
     // Direct emotion mappings (your original concept)
-    "calm": [
-        { hex: "#ADD8E6", name: "Light Blue", description: "Represents serenity, stability, and peace. Creates a tranquil and soothing atmosphere.", category: "Primary" },
-        { hex: "#87CEFA", name: "Light Sky Blue", description: "Promotes a sense of serenity and openness.", category: "Variation" },
-	    { hex: "#87CEEB", name: "Sky Blue", description: "Refreshing, airy calmness.", category: "Variation" },
-	    { hex: "#4682B4", name: "Steel Blue",description: "Grounded stillness and reflection.", category: "Variation" },
-        { hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" },
-		{ hex: "#00CED1", name: "Dark Turquoise", description: "Primary expression of comfort.", category: "Variation" },
-		{ hex: "#DAA520", name: "Goldenrod", description: "Primary expression of comfort.", category: "Variation" },
-		{ hex: "#FF7F50", name: "Coral", description: "A variation of comfort, expressed through coral.", category: "Variation" },
-		{ hex: "#BA55D3", name: "Medium Orchid", description: "A variation of comfort, expressed through medium orchid.", category: "Variation" },
-		{ hex: "#FF8C00", name: "Dark Orange", description: "Primary expression of serenity.", category: "Variation" },
-		{ hex: "#ADFF2F", name: "Green Yellow", description: "A variation of serenity, expressed through green yellow.", category: "Variation" },
-		{ hex: "#32CD32", name: "Lime Green", description: "A variation of serenity, expressed through lime green.", category: "Variation" },
-		{ hex: "#B0C4DE", name: "Light Steel Blue", description: "Quiet reflection and inner peace.", category: "Variation" },
-        { hex: "#E6E6FA", name: "Lavender", description: "Gentle, calming presence.", category: "Variation" }
+    "happy": [
+        { hex: "#FFD700", name: "Golden Sun", description: "Radiant joy and celebration, like sunlight on skin.", category: "Primary" },
+		{ hex: "#FFFF00", name: "Bright Yellow", description: "Cheerful optimism and playfulness.", category: "Variation" },
+		{ hex: "#F0E68C", name: "Khaki Glow", description: "Soft, subtle warmth of quiet happiness.", category: "Variation" },
+		{ hex: "#F3E139", name: "Lemon Zest", description: "Burst of excitement and playful cheer.", category: "Variation" },
+		{ hex: "#FFE360", name: "Golden Glow", description: "Balanced, radiant happiness.", category: "Variation" },
+		{ hex: "#FFD700", name: "Gold", description: "Stimulates perceptual warmth and optimism.", category: "Variation" },
+		{ hex: "#32CD32", name: "Lime Green", description: "Energizes with fresh, vibrant stimulation.", category: "Variation" },
+		{ hex: "#FF7F50", name: "Coral", description: "Blends warmth and vibrancy for cheerful affection.", category: "Variation" },
+		{ hex: "#FFB6C1", name: "Light Pink", description: "Evokes tender, soothing joy through soft hues.", category: "Variation" }
 		
     ],
-    "happy": [
-        { hex: "#FFD700", name: "Gold", description: "Symbolizes joy, energy, and optimism. Associated with sunlight and positivity.", category: "Primary" },
-        { hex: "#FFFF00", name: "Bright Yellow", description: "The quintessential color of happiness and cheerfulness.", category: "Variation" },
-        { hex: "#F0E68C", name: "Khaki", description: "A softer, more subtle expression of joy.", category: "Variation" },
-    	{ hex: "#FFEA00", name: "Sunshine Yellow", description: "Radiant happiness and excitement.", category: "Variation" },
-		{ hex: "#32CD32", name: "Lime Green", description: "Primary expression of joy.", category: "Variation" },
-		{ hex: "#FF4500", name: "Orange Red", description: "A variation of joy, expressed through orange red.", category: "Variation" },
-		{ hex: "#FF7F50", name: "Coral", description: "A variation of joy, expressed through coral.", category: "Variation" },
-		{ hex: "#FFB6C1", name: "Light Pink", description: "A variation of joy, expressed through light pink.", category: "Variation" }       
+    "calm": [
+        {  hex: "#00CED1", name: "Dark Turquoise", description: "Offers deeper comfort through soothing depths.", category: "Primary" },
+		{  hex: "#ADD8E6", name: "Light Blue", description: "Represents serenity, stability, and peace. Creates a tranquil and soothing atmosphere.", category: "Variation" },
+		{  hex: "#B0C4DE", name: "Light Steel Blue", description: "Quiet reflection and inner peace.", category: "Variation" },
+		{  hex: "#E6E6FA", name: "Lavender", description: "Gentle, calming presence.", category: "Variation" },
+		{  hex: "#87CEFA", name: "Light Sky Blue", description: "Promotes a sense of serenity and openness.", category: "Variation" },
+		{  hex: "#87CEEB", name: "Sky Blue", description: "Refreshing, airy calmness.", category: "Variation" },
+		{  hex: "#4682B4", name: "Steel Blue",description: "Grounded stillness and reflection.", category: "Variation" },
+		{  hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" }
     ],
     "passion": [
-        { hex: "#FF4500", name: "Orange Red", description: "Fiery and intense, representing strong emotion and desire.", category: "Primary" },
-        { hex: "#DC143C", name: "Crimson", description: "Vivid red symbolizing intense passion and energy.", category: "Variation" },
-        { hex: "#B22222", name: "Firebrick", description: "Deep red representing raw power and intensity.", category: "Variation" }
+       { hex: "#FF4500", name: "Orange Red", description: "Fiery desire, heightening intensity and emotion.", category: "Primary" },
+		{ hex: "#DC143C", name: "Crimson", description: "Vivid passion, evoking raw energy.", category: "Variation" },
+		{ hex: "#B22222", name: "Firebrick", description: "Intense power, stimulating passionate sensations.", category: "Variation" },
+		{ hex: "#FF8C00", name: "Dark Orange", description: "Warm enthusiasm, blending energy with depth.", category: "Variation" },
+		{ hex: "#FF6347", name: "Tomato", description: "Vibrant drive, energizing passion.", category: "Variation" },
+		{ hex: "#7FFF00", name: "Chartreuse", description: "Electric zeal, adding fresh fire.", category: "Variation" }
     ],
     "love": [
-        { hex: "#FF69B4", name: "Hot Pink", description: "Playful color associated with romance and affection.", category: "Primary" },
-        { hex: "#FF1493", name: "Deep Pink", description: "Vibrant emotion and romantic energy.", category: "Variation" },
-        { hex: "#FFC0CB", name: "Pink", description: "Gentle expression of love and tenderness.", category: "Variation" }
+        { hex: "#FF1450", name: "Crimson Rose", description: "Bold and romantic, the essence of passionate love.", category: "Primary" },
+		{ hex: "#E88372", name: "Blush Peach", description: "Soft affection and warmth of tender connection.", category: "Variation" },
+		{ hex: "#FF69B4", name: "Hot Pink", description: "Playful romance and lively attraction.", category: "Variation" },
+		{ hex: "#FF1493", name: "Deep Pink", description: "Vivid, exciting intensity of desire.", category: "Variation" },
+		{ hex: "#FFC0CB", name: "Baby Pink", description: "Gentle sweetness of pure affection.", category: "Variation" },
+		{ hex: "#E6094F", name: "Raspberry Red", description: "Electric spark of infatuation and intensity.", category: "Variation" },
+		{ hex: "#E94882", name: "Rose Quartz", description: "Romantic glow and intimacy.", category: "Variation" },
+		{ hex: "#FC8286", name: "Coral Kiss", description: "Playful flirtation and warmth.", category: "Variation" }
     ],
     "sadness": [
-        { hex: "#36454F", name: "Charcoal Gray", description: "Conveys reflection and contemplative mood.", category: "Primary" },
-        { hex: "#2F4F4F", name: "Dark Slate Gray", description: "Grounding presence for serious contemplation.", category: "Variation" },
-        { hex: "#696969", name: "Dim Gray", description: "Subtle color hinting at melancholy.", category: "Variation" }
+        { hex: "#5A5760", name: "Dusky Gray", description: "Quiet sorrow and solitude.", category: "Primary" },
+		{ hex: "#705B5F", name: "Ash Violet", description: "Dim, reflective sadness.", category: "Variation" },
+		{ hex: "#7B7890", name: "Slate Mist", description: "Lingering wistfulness.", category: "Variation" },
+		{ hex: "#807C74", name: "Dusty Olive", description: "Nostalgic sadness, weathered and soft.", category: "Variation" },
+		{ hex: "#36454F", name: "Charcoal Gray", description: "Weight of reflection and grief.", category: "Variation" },
+		{ hex: "#2F4F4F", name: "Dark Slate Gray", description: "Heavy quiet of loss.", category: "Variation" },
+		{ hex: "#696969", name: "Dim Gray", description: "Lingering melancholy.", category: "Variation" },
+		{ hex: "#5A5760", name: "Ash Mist", description: "Dull ache of sorrow.", category: "Variation" },
+		{ hex: "#6066B7", name: "Slate Blue", description: "Subdued sadness with depth.", category: "Variation" }
     ],
     "mystery": [
-        { hex: "#4B0082", name: "Indigo", description: "Represents the unknown, intuition, and depth.", category: "Primary" },
-        { hex: "#000000", name: "Black", description: "Classic color of mystery and intrigue.", category: "Variation" },
-        { hex: "#483D8B", name: "Dark Slate Blue", description: "Shadowy and mysterious atmosphere.", category: "Variation" }
+        { hex: "#4B0082", name: "Indigo", description: "Deep unknown, intuition, and secrets.", category: "Primary" },
+		{ hex: "#000000", name: "Black", description: "Classic void of intrigue and enigma.", category: "Variation" },
+		{ hex: "#483D8B", name: "Dark Slate Blue", description: "Shadowy undertones of curiosity.", category: "Variation" },
+		{ hex: "#211F5B", name: "Midnight Violet", description: "Twilight’s quiet, puzzling beauty.", category: "Variation" },
+		{ hex: "#430A56", name: "Plum Shadow", description: "Eerie elegance and hidden power.", category: "Variation" }
     ],
     "anger": [
-        { hex: "#B22222", name: "Firebrick", description: "Symbolizes intensity, aggression, and power.", category: "Primary" },
-        { hex: "#8B0000", name: "Dark Red", description: "Deep, powerful expression of anger.", category: "Variation" },
-        { hex: "#A52A2A", name: "Brown", description: "Earthy intensity and grounded anger.", category: "Variation" }
+       	{ hex: "#B22222", name: "Firebrick", description: "Raw intensity and confrontation.", category: "Primary" },
+		{ hex: "#8B0000", name: "Dark Red", description: "Heavy, unyielding force of fury.", category: "Variation" },
+		{ hex: "#A52A2A", name: "Brown Heat", description: "Grounded and simmering anger.", category: "Variation" },
+		{ hex: "#C82308", name: "Molten Crimson", description: "Explosive burst of heated rage.", category: "Variation" },
+		{ hex: "#92251A", name: "Burnt Brick", description: "Lingering anger, slow and consuming.", category: "Variation" }
     ],
     "fear": [
-        { hex: "#808000", name: "Olive", description: "Represents tension and unease.", category: "Primary" },
-        { hex: "#556B2F", name: "Dark Olive Green", description: "Darker expression of anxiety and worry.", category: "Variation" },
-        { hex: "#6B8E23", name: "Olive Drab", description: "Military-inspired color evoking tension.", category: "Variation" }
+        {  hex: "#2F4F4F", name: "Dark Slate Gray", description: "Uncertainty and unease.", category: "Variation" },
+		{  hex: "#708090", name: "Slate Gray", description: "Lingering anxiety and tension.", category: "Variation" },
+		{  hex: "#808000", name: "Olive", description: "Represents tension and unease.", category: "Primary" },
+		{  hex: "#556B2F", name: "Dark Olive Green", description: "Darker expression of anxiety and worry.", category: "Variation" },
+		{  hex: "#6B8E23", name: "Olive Drab", description: "Military-inspired color evoking tension.", category: "Variation" },
+		{  hex: "#191970", name: "Midnight Blue", description: "Mysterious, unsettling atmosphere.", category: "Variation" },
+		{  hex: "#5D5908", name: "Moss Shadow", description: "Lurking dread, earthy and unsettling.", category: "Variation" },
+		{  hex: "#48451D", name: "Dark Mustard", description: "Stale fear and quiet paranoia.", category: "Variation" }
     ],
     "courage": [
-        { hex: "#A0522D", name: "Sienna", description: "Signifies strength, resilience, and earthiness.", category: "Primary" },
-        { hex: "#CD853F", name: "Peru", description: "Warm, dependable color for overcoming challenges.", category: "Variation" },
-        { hex: "#D2691E", name: "Chocolate", description: "Rich, solid color representing determination.", category: "Variation" }
+        { hex: "#A0522D", name: "Sienna", description: "Signifies resilience and earthiness.", category: "Primary" },
+ 		{ hex: "#CD853F", name: "Peru", description: "Warm and dependable for challenges.", category: "Variation" },
+ 		{ hex: "#D2691E", name: "Chocolate", description: "Rich determination, grounding senses in courageous warmth.", category: "Variation" },
+		{ hex: "#CD5C5C", name: "Indian Red", description: "Energizes courage through vibrant stimulation.", category: "Variation" },
+		{ hex: "#8B0000", name: "Dark Red", description: "Deep boldness, evoking powerful confidence.", category: "Variation" },
+ 		{ hex: "#DAA520", name: "Goldenrod", description: "Optimistic strength, brightening valor.", category: "Variation" },
+ 		{ hex: "#556B2F", name: "Dark Olive Green", description: "Resilient groundedness, supporting fearless experiences.", category: "Variation" },
+ 		{ hex: "#9370DB", name: "Medium Purple", description: "Noble courage, blending intuition with bold depth.", category: "Variation" }
     ],
     "creativity": [
-        { hex: "#9932CC", name: "Dark Orchid", description: "Inspiring unique and imaginative thoughts.", category: "Primary" },
-        { hex: "#FF00FF", name: "Magenta", description: "Bold ideas and innovation.", category: "Variation" }
+       {  hex: "#9932CC", name: "Dark Orchid", description: "Inspiring unique and imaginative thoughts.", category: "Primary" },
+		{  hex: "#FF00FF", name: "Magenta", description: "Bold ideas and innovation.", category: "Variation" }
     ],
     "wisdom": [
-        { hex: "#4B0082", name: "Indigo", description: "Associated with intuition and deep knowledge.", category: "Primary" },
-        { hex: "#800080", name: "Purple", description: "Traditional color of wisdom and royalty.", category: "Variation" }
+        {  hex: "#4B0082", name: "Indigo", description: "Evokes intuition and deep knowledge.", category: "Primary" },
+		{  hex: "#6A5ACD", name: "Slate Blue", description: "Provides thoughtful clarity.", category: "Variation" },
+		{  hex: "#800080", name: "Purple", description: "Represents traditional wisdom.", category: "Variation" },
+   ],
+	"trust": [
+		{ hex: "#ADD8E6", name: "Light Blue", description: "Builds trust through calming stability, soothing doubts.", category: "Primary" },
+		{ hex: "#556B2F", name: "Dark Olive Green", description: "Grounded reliability, evoking dependability.", category: "Variation" },
+		{ hex: "#2E8B57", name: "Sea Green", description: "Balanced trustworthiness, blending nature's calm with visual assurance.", category: "Variation" }
+	],
+	"comfort": [
+		{ hex: "#D2691E", name: "Chocolate", description: "Warms senses with rich comfort, simulating cozy perceptual embrace.", category: "Primary" },
+		{ hex: "#FFB6C1", name: "Light Pink", description: "Soft warmth, evoking gentle nostalgia.", category: "Variation" },
+		{ hex: "#2E8B57", name: "Sea Green", description: "Nostalgic calm, grounding in familiar natural hues.", category: "Variation" },
+		{ hex: "#FF1493", name: "Deep Pink", description: "Vibrant nostalgia, stimulating affectionate memories.", category: "Variation" },
+		{ hex: "#20B2AA", name: "Light Sea Green", description: "Refreshing warmth, blending past comforts with fresh perceptions.", category: "Variation" }
     ],
+	"tradition": [
+		{ hex: "#DAA520", name: "Goldenrod", description: "Timeless tradition, warming continuity.", category: "Primary" },
+		{ hex: "#ADD8E6", name: "Light Blue", description: "Ordered stability, calming perceptual structures.", category: "Variation" },
+		{ hex: "#A52A2A", name: "Brown", description: "Grounded order, evoking reliable earthiness.", category: "Variation" }
+	],
+	"grounded": [
+		{ hex: "#D2691E", name: "Chocolate", description: "Rich stability, grounding experiences.", category: "Primary" },
+		{ hex: "#A0522D", name: "Sienna", description: "Earthy resilience, evoking balance.", category: "Variation" },
+		{ hex: "#3CB371", name: "Medium Sea Green", description: "Natural groundedness, refreshing stable sensations.", category: "Variation" }
+	],
+	"focus": [
+		{ hex: "#87CEEB", name: "Sky Blue", description: "Enhances clarity with open space.", category: "Primary" },
+		{ hex: "#20B2AA", name: "Light Sea Green", description: "Refreshes focus, stimulating crisp alignment.", category: "Variation" },
+		{ hex: "#ADFF2F", name: "Green Yellow", description: "Energizes clarity, brightening perceptions.", category: "Variation" },
+		{ hex: "#8A2BE2", name: "Blue Violet", description: "Deepens focus through intuitive visual depth.", category: "Variation" }
+	],
+	"hope": [
+		{ hex: "#C2EA1F", name: "Lime Radiance", description: "Fresh optimism, springlike energy.", category: "Primary" },
+		{ hex: "#DAF14F", name: "Lemon Glow", description: "Bright potential and promise.", category: "Variation" },
+		{ hex: "#9BEB46", name: "Green Vitality", description: "Alive with possibility and renewal.", category: "Variation" },
+		{ hex: "#B3EF6B", name: "Spring Meadow", description: "Gentle, uplifting outlook.", category: "Variation" },
+		{ hex: "#82D930", name: "Bright Clover", description: "Optimistic growth and life force.", category: "Variation" },
+		{ hex: "#91C808", name: "Fresh Chartreuse", description: "Energetic push toward the future.", category: "Variation" }
+	],
+	"playful": [ 
+		{ hex: "#6FA03B", name: "Lively Green", description: "Burst of interactive, youthful fun.", category: "Primary" },
+		{ hex: "#9F73E7", name: "Lilac Spark", description: "Whimsical delight and energy.", category: "Variation" },
+		{ hex: "#FC6840", name: "Tangerine Pop", description: "Cheeky, spirited humor.", category: "Variation" },
+		{ hex: "#FF5319", name: "Bright Orange", description: "Exuberant excitement and movement.", category: "Variation" },
+		{ hex: "#EFFE94", name: "Banana Yellow", description: "Lighthearted mischief and joy.", category: "Variation" }
+	],
     "elegance": [
-        { hex: "#C0C0C0", name: "Silver", description: "Sophisticated and refined.", category: "Primary" },
-        { hex: "#A9A9A9", name: "Dark Gray", description: "Timeless elegance.", category: "Variation" }
-    ]
+    	{ hex: "#800080", name: "Purple", description: "Royal luxury, deepening experiences.", category: "Primary" },
+		{ hex: "#B0E0E6", name: "Powder Blue", description: "Refined calm, evoking elegant softness.", category: "Variation" },
+		{ hex: "#FFD700", name: "Gold", description: "Opulent shine, stimulating visual-tactile luxury.", category: "Variation" },
+		{ hex: "#000000", name: "Black", description: "Timeless elegance, grounding in mysterious depth.", category: "Variation" }
+    ],
 };
 
 // Synonym mapping for better emotion recognition
