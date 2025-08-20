@@ -9,13 +9,27 @@ const emotionDatabase = {
         { hex: "#87CEFA", name: "Light Sky Blue", description: "Promotes a sense of serenity and openness.", category: "Variation" },
 	    { hex: "#87CEEB", name: "Sky Blue", description: "Refreshing, airy calmness.", category: "Variation" },
 	    { hex: "#4682B4", name: "Steel Blue",description: "Grounded stillness and reflection.", category: "Variation" },
-        { hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" }
+        { hex: "#B0E0E6", name: "Powder Blue", description: "Perfect for relaxation and gentle contemplation.", category: "Variation" },
+		{ hex: "#00CED1", name: "Dark Turquoise", description: "Primary expression of comfort.", category: "Variation" },
+		{ hex: "#DAA520", name: "Goldenrod", description: "Primary expression of comfort.", category: "Variation" },
+		{ hex: "#FF7F50", name: "Coral", description: "A variation of comfort, expressed through coral.", category: "Variation" },
+		{ hex: "#BA55D3", name: "Medium Orchid", description: "A variation of comfort, expressed through medium orchid.", category: "Variation" },
+		{ hex: "#FF8C00", name: "Dark Orange", description: "Primary expression of serenity.", category: "Variation" },
+		{ hex: "#ADFF2F", name: "Green Yellow", description: "A variation of serenity, expressed through green yellow.", category: "Variation" },
+		{ hex: "#32CD32", name: "Lime Green", description: "A variation of serenity, expressed through lime green.", category: "Variation" },
+		{ hex: "#B0C4DE", name: "Light Steel Blue", description: "Quiet reflection and inner peace.", category: "Variation" },
+        { hex: "#E6E6FA", name: "Lavender", description: "Gentle, calming presence.", category: "Variation" }
+		
     ],
     "happy": [
         { hex: "#FFD700", name: "Gold", description: "Symbolizes joy, energy, and optimism. Associated with sunlight and positivity.", category: "Primary" },
         { hex: "#FFFF00", name: "Bright Yellow", description: "The quintessential color of happiness and cheerfulness.", category: "Variation" },
         { hex: "#F0E68C", name: "Khaki", description: "A softer, more subtle expression of joy.", category: "Variation" },
-        { hex: "#FFEA00", name: "Sunshine Yellow", description: "Radiant happiness and excitement.", category: "Variation" }
+    	{ hex: "#FFEA00", name: "Sunshine Yellow", description: "Radiant happiness and excitement.", category: "Variation" },
+		{ hex: "#32CD32", name: "Lime Green", description: "Primary expression of joy.", category: "Variation" },
+		{ hex: "#FF4500", name: "Orange Red", description: "A variation of joy, expressed through orange red.", category: "Variation" },
+		{ hex: "#FF7F50", name: "Coral", description: "A variation of joy, expressed through coral.", category: "Variation" },
+		{ hex: "#FFB6C1", name: "Light Pink", description: "A variation of joy, expressed through light pink.", category: "Variation" }       
     ],
     "passion": [
         { hex: "#FF4500", name: "Orange Red", description: "Fiery and intense, representing strong emotion and desire.", category: "Primary" },
@@ -51,16 +65,6 @@ const emotionDatabase = {
         { hex: "#A0522D", name: "Sienna", description: "Signifies strength, resilience, and earthiness.", category: "Primary" },
         { hex: "#CD853F", name: "Peru", description: "Warm, dependable color for overcoming challenges.", category: "Variation" },
         { hex: "#D2691E", name: "Chocolate", description: "Rich, solid color representing determination.", category: "Variation" }
-    ],
-    
-    // Extended emotion mappings for richer experience
-    "joy": [
-        { hex: "#FFD700", name: "Gold", description: "Pure joy and celebration.", category: "Primary" },
-        { hex: "#FFFF00", name: "Yellow", description: "Bright, cheerful expression of happiness.", category: "Variation" }
-    ],
-    "serenity": [
-        { hex: "#B0C4DE", name: "Light Steel Blue", description: "Quiet reflection and inner peace.", category: "Primary" },
-        { hex: "#E6E6FA", name: "Lavender", description: "Gentle, calming presence.", category: "Variation" }
     ],
     "creativity": [
         { hex: "#9932CC", name: "Dark Orchid", description: "Inspiring unique and imaginative thoughts.", category: "Primary" },
