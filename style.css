@@ -135,8 +135,8 @@ header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
   margin: 0 0 var(--spacing-sm) 0;
-  text-shadow: 0 4px 8px rgba(248, 150, 35, 0.3);
   animation: logoGlow 3s ease-in-out infinite alternate;
 }
 
@@ -608,7 +608,7 @@ footer p {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --color-gray: #000000;
-    --apici-secondary: #000080;
+    --color-gray: #d0d0d0;
+    --apici-secondary: #004080;
   }
 }
