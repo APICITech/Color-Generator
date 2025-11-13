@@ -1,5 +1,15 @@
-// APICI Color Generator - Enhanced JavaScript
-// Combining emotion mapping with comprehensive color database
+/**
+ * Color Generator - Enhanced JavaScript
+ * @author APIciTech
+ * @version 2.0
+ * @description A web application that maps emotions to colors,
+ * allowing users to select emotions and receive color palettes
+ * with descriptions and categories for enhanced user experience.
+ * @fileoverview Combines emotion mapping with comprehensive color database
+ * including primary colors and variations with detailed descriptions.
+ */
+
+// Combining emotion mapping with comprehensive color database// Combining emotion mapping with comprehensive color database
 
 // Enhanced emotion-to-color mapping with variations
 const emotionDatabase = {
@@ -191,7 +201,14 @@ const resultContainer = document.getElementById('resultContainer');
 const form = document.querySelector('.input-group');
 
 // Initialize the application
-function initializeApp() {
+/**
+ * Initializes the application when DOM content is fully loaded.
+ * Sets up event listeners and prepares the emotion selector interface.
+ * @function
+ * @returns {void}
+ */
+204
+	initializeApp() {
     // Add event listeners
     form.addEventListener('submit', handleFormSubmit);
     generateBtn.addEventListener('click', handleGenerate);
@@ -267,8 +284,17 @@ function normalizeEmotion(input) {
 }
 
 // Main color generation function
+/**
+ * Generates and displays a color palette based on user emotion input.
+ * Validates the emotion input, retrieves corresponding colors from the emotion database,
+ * and renders them with descriptions and copy functionality.
+ * @function
+ * @throws {Error} If emotion database is not accessible
+ * @returns {void}
+ */
 function generateColor() {
     const feeling = feelingInput.value.trim();
+		console.log('[Color Generator] User entered emotion:', feeling);
     
     if (!feeling) {
         showError("Please enter an emotion or feeling.");
@@ -472,3 +498,13 @@ function copyPalette(emotion) {
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeApp);
+
+// Add global error handler for unhandled errors
+window.addEventListener('error', (event) => {
+	console.error('[Color Generator] An unexpected error occurred:', event.error);
+	showError('An unexpected error occurred. Please refresh the page.');
+});
+
+// Log when the script has loaded successfully
+console.log('[Color Generator] Script loaded successfully. Ready to accept user input.');
+
