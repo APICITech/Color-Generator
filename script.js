@@ -1,6 +1,6 @@
 /**
  * Color Generator - Enhanced JavaScript
- * @author APIciTech
+ * @author APIcITechnologies
  * @version 2.0
  * @description A web application that maps emotions to colors,
  * allowing users to select emotions and receive color palettes
@@ -8,8 +8,6 @@
  * @fileoverview Combines emotion mapping with comprehensive color database
  * including primary colors and variations with detailed descriptions.
  */
-
-// Combining emotion mapping with comprehensive color database// Combining emotion mapping with comprehensive color database
 
 // Enhanced emotion-to-color mapping with variations
 const emotionDatabase = {
@@ -69,7 +67,7 @@ const emotionDatabase = {
         { hex: "#4B0082", name: "Indigo", description: "Deep unknown, intuition, and secrets.", category: "Primary" },
 		{ hex: "#000000", name: "Black", description: "Classic void of intrigue and enigma.", category: "Variation" },
 		{ hex: "#483D8B", name: "Dark Slate Blue", description: "Shadowy undertones of curiosity.", category: "Variation" },
-		{ hex: "#211F5B", name: "Midnight Violet", description: "Twilight’s quiet, puzzling beauty.", category: "Variation" },
+		{ hex: "#211F5B", name: "Midnight Violet", description: "Twilight's quiet, puzzling beauty.", category: "Variation" },
 		{ hex: "#430A56", name: "Plum Shadow", description: "Eerie elegance and hidden power.", category: "Variation" }
     ],
     "anger": [
@@ -106,8 +104,8 @@ const emotionDatabase = {
     "wisdom": [
         {  hex: "#4B0082", name: "Indigo", description: "Evokes intuition and deep knowledge.", category: "Primary" },
 		{  hex: "#6A5ACD", name: "Slate Blue", description: "Provides thoughtful clarity.", category: "Variation" },
-		{  hex: "#800080", name: "Purple", description: "Represents traditional wisdom.", category: "Variation" },
-   ],
+		{  hex: "#800080", name: "Purple", description: "Represents traditional wisdom.", category: "Variation" }
+    ],
 	"trust": [
 		{ hex: "#ADD8E6", name: "Light Blue", description: "Builds trust through calming stability, soothing doubts.", category: "Primary" },
 		{ hex: "#556B2F", name: "Dark Olive Green", description: "Grounded reliability, evoking dependability.", category: "Variation" },
@@ -156,7 +154,7 @@ const emotionDatabase = {
 		{ hex: "#B0E0E6", name: "Powder Blue", description: "Refined calm, evoking elegant softness.", category: "Variation" },
 		{ hex: "#FFD700", name: "Gold", description: "Opulent shine, stimulating visual-tactile luxury.", category: "Variation" },
 		{ hex: "#000000", name: "Black", description: "Timeless elegance, grounding in mysterious depth.", category: "Variation" }
-    ],
+    ]
 };
 
 // Synonym mapping for better emotion recognition
@@ -207,7 +205,7 @@ const form = document.querySelector('.input-group');
  * @function
  * @returns {void}
  */
-	initializeApp() {
+function initializeApp() {
     // Add event listeners
     form.addEventListener('submit', handleFormSubmit);
     generateBtn.addEventListener('click', handleGenerate);
@@ -293,7 +291,7 @@ function normalizeEmotion(input) {
  */
 function generateColor() {
     const feeling = feelingInput.value.trim();
-		console.log('[Color Generator] User entered emotion:', feeling);
+	console.log('[Color Generator] User entered emotion:', feeling);
     
     if (!feeling) {
         showError("Please enter an emotion or feeling.");
@@ -506,4 +504,3 @@ window.addEventListener('error', (event) => {
 
 // Log when the script has loaded successfully
 console.log('[Color Generator] Script loaded successfully. Ready to accept user input.');
-
