@@ -16,16 +16,16 @@
 </head>
 <body>
     <div class="container">
-        <header role="banner">
+        <header>
             <h1 class="logo">APICI</h1>
             <p class="tagline">#entertainyoursenses</p>
         </header>
         
-        <main role="main">
+        <main>
             <section class="generator-section">
                 <h2 class="section-title">Type a feeling and discover its color:</h2>
                 
-                <form class="input-group" role="form" aria-label="Emotion to color generator">
+                <form class="input-group" aria-label="Emotion to color generator">
                     <label for="feelingInput" class="visually-hidden">Enter your emotion or feeling</label>
                     <input 
                         type="text" 
@@ -37,14 +37,11 @@
                         spellcheck="false"
                         required
                     >
-                    <button type="submit" id="generateBtn" aria-describedby="generate-help">Generate</button>
+                    <button type="submit" id="generateBtn" aria-label="Generate color palette based on your emotion">Generate</button>
                 </form>
                 
                 <div id="input-help" class="help-text visually-hidden">
                     Enter any emotion or feeling to generate its corresponding color
-                </div>
-                <div id="generate-help" class="help-text visually-hidden">
-                    Click to generate colors based on your emotion
                 </div>
                 
                 <div id="resultContainer" class="result-container" role="region" aria-live="polite" aria-label="Generated color results">
@@ -53,7 +50,7 @@
             </section>
         </main>
         
-        <footer role="contentinfo">
+        <footer>
             <p>&copy; 2025 APICI - Entertaining Your Senses</p>
         </footer>
     </div>
