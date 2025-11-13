@@ -207,8 +207,7 @@ const form = document.querySelector('.input-group');
  * @function
  * @returns {void}
  */
-204
-	initializeApp() {
+	function initializeApp() {
     // Add event listeners
     form.addEventListener('submit', handleFormSubmit);
     generateBtn.addEventListener('click', handleGenerate);
