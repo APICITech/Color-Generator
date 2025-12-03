@@ -7,7 +7,6 @@
     <meta name="keywords" content="color generator, emotions, feelings, design, APICI">
     <title>APICI Color Generator - Transform Feelings into Colors</title>
     
-    <!-- Preload critical font for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,7 +31,7 @@
                         id="feelingInput" 
                         name="feeling"
                         placeholder="e.g., Calm, Happy, Passion..."
-                        aria-describedby="input-help"
+                        aria-describedby="input-help" 
                         autocomplete="off"
                         spellcheck="false"
                         required
@@ -40,13 +39,12 @@
                     <button type="submit" id="generateBtn" aria-label="Generate color palette based on your emotion">Generate</button>
                 </form>
                 
-                <div id="input-help" class="help-text visually-hidden">
-                    Enter any emotion or feeling to generate its corresponding color
+                <div id="input-help" class="help-text">
+                    Enter any emotion or feeling to generate its corresponding color.
                 </div>
                 
                 <div id="resultContainer" class="result-container" role="region" aria-live="polite" aria-label="Generated color results">
-                    <!-- Generated colors will appear here -->
-                </div>
+                    </div>
             </section>
         </main>
         
