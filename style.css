@@ -30,274 +30,222 @@
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
-  --radius-lg: 12px; /* Slightly smaller for cleaner look */
+  --radius-lg: 12px;
   
-  /* Shadows - Minimalist shadow for depth */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-  
-  /* Transitions */
-  --transition-normal: 0.2s ease-out;
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Reset and Base Styles */
+/* Global Styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: var(--font-family-primary);
-  /* Simplified, bright background */
   background-color: var(--color-light-gray);
   color: var(--color-dark-gray);
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically */
-  min-height: 100vh;
-  margin: 0;
-  padding: var(--spacing-xl);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Main Container - Cleaner, less decorated */
 .container {
-  background: var(--color-white);
-  padding: var(--spacing-xxl);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  text-align: center;
-  width: 100%;
-  max-width: 650px; /* Slightly narrower */
-  position: relative;
-  overflow: hidden;
-  /* Removed border effect */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-xxl) var(--spacing-lg);
 }
 
-/* Header Styles - Removed animations and custom logo effects */
+/* Header */
 header {
-  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
 }
 
 .logo {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: 2.5rem;
   font-weight: 700;
-  /* Simple color for logo, using primary brand color */
   color: var(--apici-primary);
-  margin: 0 0 var(--spacing-sm) 0;
-  letter-spacing: 1px;
-}
-
-/* Removed ::before glasses icon */
-.logo::before {
-    content: none;
 }
 
 .tagline {
-  font-size: 0.9rem;
-  color: var(--apici-secondary-dark); /* Subtle brand accent */
-  margin: 0;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 1rem;
+  color: var(--apici-secondary);
+  margin-top: var(--spacing-sm);
 }
 
-/* Main Content Area */
+/* Generator Section */
+.generator-section {
+  background-color: var(--color-white);
+  padding: var(--spacing-xxl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
 .section-title {
-  font-size: 1.2rem;
-  color: var(--color-dark-gray);
-  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
   font-weight: 600;
+  color: var(--color-dark-gray);
 }
 
 /* Form Styles */
 .input-group {
   display: flex;
   justify-content: center;
-  margin-bottom: var(--spacing-xl);
+  /* REDUCED MARGIN: Adjusted this in previous step for better help-text spacing */
+  margin-bottom: var(--spacing-lg); 
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: none; /* Removed shadow from input group */
+  box-shadow: none; 
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-gray); /* Subtle border */
   overflow: hidden;
 }
 
 #feelingInput {
-  padding: 1rem 1.25rem;
+  flex-grow: 1;
+  padding: var(--spacing-md);
+  font-size: 1.1rem;
   border: none;
-  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-  font-size: 1rem;
-  font-family: var(--font-family-primary);
-  width: 65%;
   outline: none;
-  transition: border var(--transition-normal), box-shadow var(--transition-normal);
-  background: var(--color-white);
+  transition: border-color 0.3s ease;
 }
 
+#feelingInput::placeholder {
+  color: var(--color-medium-gray);
+}
+
+/* The JS changes the border color on focus/input */
 #feelingInput:focus {
-  box-shadow: inset 0 0 0 2px var(--apici-secondary); /* Clean focus highlight */
+  /* Using JS to set border color on recognition/error, but keep focus clear */
+  box-shadow: 0 0 0 2px rgba(var(--apici-primary), 0.2); 
 }
 
-/* Generate Button */
 #generateBtn {
-  padding: 1rem 2rem;
-  border: none;
-  background-color: var(--apici-primary); /* Solid primary color */
+  background-color: var(--apici-primary);
   color: var(--color-white);
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--font-family-primary);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
   cursor: pointer;
-  transition: background-color var(--transition-normal), transform var(--transition-normal);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: 35%;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 #generateBtn:hover {
   background-color: var(--apici-primary-dark);
-  transform: translateY(-1px);
 }
 
-#generateBtn:active {
-  transform: translateY(0);
+/* Help Text */
+/* This style was added in the previous cleanup step */
+.help-text {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-medium-gray);
+  margin-top: calc(var(--spacing-md) * -1); 
+  margin-bottom: var(--spacing-md);
+  font-style: italic;
+  padding: 0 var(--spacing-md); 
 }
 
-/* Removed custom button ripple effect */
-#generateBtn::after {
-    content: none;
-}
-
-/* Visually Hidden Utility - Kept for accessibility */
+/* Visually Hidden Utility */
 .visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
+
+/* --- JS FEEDBACK/RESULT STYLES --- */
+
+/* 1. Error Message (Used by showError in script.js) */
+/* The JS uses inline styling for color, but a dedicated class is cleaner for block styling */
+.error-message {
+    padding: var(--spacing-md);
+    border: 1px solid var(--apici-secondary); /* Use secondary for border clarity */
+    background-color: rgba(var(--apici-secondary), 0.1); /* Subtle background */
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 1rem;
+    margin: var(--spacing-xl) auto;
+    max-width: 400px;
+}
+
 
 /* Result Container */
 .result-container {
-  margin-top: var(--spacing-lg);
-  animation: fadeInUp 0.4s ease-out; /* Kept subtle animation */
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Color Result Styles - Simplified background */
-.color-result {
-  text-align: left;
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  margin-top: var(--spacing-lg);
-  border: 1px solid var(--color-gray);
-  box-shadow: var(--shadow-sm);
+  margin-top: var(--spacing-xl); /* Increased separation from form */
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-gray);
 }
 
 .emotion-title {
-  font-size: 1.8rem;
-  /* Simple color for title */
-  color: var(--apici-secondary-dark);
-  margin: 0 0 var(--spacing-lg) 0;
-  font-weight: 700;
   text-align: center;
-  text-transform: capitalize;
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 700;
+  color: var(--apici-primary-dark);
 }
 
 /* Primary Color Display */
 .primary-color {
   display: flex;
   align-items: center;
-  margin-bottom: var(--spacing-xl);
-  background: var(--color-light-gray); /* Subtle background for distinction */
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  box-shadow: none; /* Removed internal shadow */
-  border: 1px solid var(--color-gray);
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xxl);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-light-gray);
 }
 
 .color-swatch {
-  border-radius: var(--radius-sm); /* Sharper, cleaner corners */
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-.color-swatch:hover {
-  transform: scale(1.05); /* Reduced hover scale */
-  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
 }
 
 .color-swatch.large {
   width: 100px;
   height: 100px;
-  margin-right: var(--spacing-lg);
-}
-
-.color-swatch.small {
-  width: 50px;
-  height: 50px;
-  margin-right: var(--spacing-md);
 }
 
 .color-details {
-  flex: 1;
+  flex-grow: 1;
 }
 
-.color-name {
-  font-size: 1.4rem;
+.color-details h4 {
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-dark-gray);
-  margin: 0 0 var(--spacing-xs) 0;
 }
 
 .hex-code {
   font-family: var(--font-family-mono);
-  font-weight: 600;
   font-size: 1rem;
   color: var(--apici-primary-dark);
-  background-color: rgba(248, 150, 35, 0.1); /* Subtle hex background */
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-sm);
-  display: inline-block;
-  margin: 0 0 var(--spacing-md) 0;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  border: none;
-}
-
-.hex-code:hover {
-  background-color: rgba(248, 150, 35, 0.2);
-  transform: translateY(-1px);
-  box-shadow: none;
+  margin: var(--spacing-sm) 0;
+  cursor: pointer; /* Indication for JS copy function */
 }
 
 .color-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
   color: var(--color-medium-gray);
-  margin: 0;
-  font-style: normal; /* Removed italics */
 }
 
-/* Color Variations */
+/* Variations Grid */
 .color-variations h4 {
   font-size: 1.2rem;
-  color: var(--color-dark-gray);
-  margin: 0 0 var(--spacing-lg) 0;
-  font-weight: 600;
-  border-bottom: 1px solid var(--color-gray); /* Clear separation */
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-gray);
   padding-bottom: var(--spacing-sm);
 }
 
@@ -309,126 +257,107 @@ header {
 
 .variation-item {
   display: flex;
-  align-items: flex-start;
-  background: var(--color-white);
+  align-items: center;
   padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  min-height: 100px;
+  background-color: var(--color-white);
   border: 1px solid var(--color-gray);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
 }
 
 .variation-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--apici-secondary-dark);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--apici-secondary);
 }
 
-.variation-info .color-name {
-  font-size: 1rem;
-  font-weight: 600;
+.color-swatch.small {
+  width: 40px;
+  height: 40px;
+  margin-right: var(--spacing-md);
+}
+
+.variation-info {
+  line-height: 1.2;
 }
 
 .variation-info .hex-code {
-  font-size: 0.8rem;
-  margin: 0 0 var(--spacing-sm) 0;
-  padding: 2px 8px;
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 .variation-info .color-description {
-  font-size: 0.85rem;
-  line-height: 1.4;
+  display: none; /* Hide description in small variation view */
 }
 
 /* Action Buttons */
 .action-buttons {
+  margin-top: var(--spacing-xxl);
   display: flex;
   gap: var(--spacing-md);
-  margin-top: var(--spacing-xl);
-  justify-content: flex-end; /* Align to the right */
+  justify-content: flex-end;
 }
 
-.copy-palette-btn,
-.new-emotion-btn {
-  padding: var(--spacing-md) var(--spacing-lg);
-  border: 1px solid var(--apici-primary);
-  background: transparent;
-  color: var(--apici-primary);
-  font-size: 0.9rem;
+.action-buttons button, .suggestion-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
   font-weight: 600;
-  font-family: var(--font-family-primary);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all var(--transition-normal);
-  text-transform: capitalize; /* Changed to capitalize for softer look */
-  letter-spacing: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.copy-palette-btn {
+  background-color: var(--apici-secondary);
+  color: var(--color-white);
 }
 
 .copy-palette-btn:hover {
-  background: var(--apici-primary);
-  color: var(--color-white);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  background-color: var(--apici-secondary-dark);
 }
 
 .new-emotion-btn {
-  border-color: var(--apici-secondary);
-  color: var(--apici-secondary);
+  background-color: var(--color-gray);
+  color: var(--color-dark-gray);
 }
 
 .new-emotion-btn:hover {
-  background: var(--apici-secondary);
+  background-color: var(--color-medium-gray);
   color: var(--color-white);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
 }
 
-/* No Match Result Styles */
+/* Suggestions/No Match */
 .no-match-result {
   text-align: center;
-  padding: var(--spacing-xl);
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  margin-top: var(--spacing-lg);
-  border: 1px solid var(--apici-secondary); /* Solid brand color border */
-  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-xl) 0;
 }
 
 .not-found-message h3 {
-  color: var(--apici-primary-dark);
-  font-size: 1.3rem;
-  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--apici-secondary);
+  margin-bottom: var(--spacing-md);
 }
 
 .not-found-message p {
   color: var(--color-medium-gray);
-  margin: 0 0 var(--spacing-lg) 0;
-  font-size: 1rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-/* Suggestion Buttons */
 .suggestions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
   justify-content: center;
-  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .suggestion-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: 1px solid var(--apici-secondary);
-  background: var(--color-white);
-  color: var(--apici-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: var(--radius-full);
-  transition: all var(--transition-normal);
+  background-color: var(--color-white);
+  color: var(--apici-primary);
+  border-color: var(--apici-primary);
 }
 
 .suggestion-btn:hover {
-  background: var(--apici-secondary);
+  background-color: var(--apici-primary);
   color: var(--color-white);
   transform: scale(1.05);
   box-shadow: var(--shadow-sm);
@@ -479,36 +408,27 @@ footer p {
   
   #feelingInput {
     width: 100%;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     border: 1px solid var(--color-gray);
-    border-bottom: none;
-    padding: 1rem;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   }
   
   #generateBtn {
-    width: 100%;
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    padding: 1rem;
-  }
-  
-  .color-result {
-    padding: var(--spacing-lg);
-  }
-  
-  .primary-color {
-    padding: var(--spacing-md);
-  }
-  
-  .emotion-title {
-    font-size: 1.5rem;
-  }
-  
-  .color-swatch.large {
-    width: 80px;
-    height: 80px;
   }
   
   .variation-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* 1. Error Message (Used by showError in script.js) */
+.error-message {
+    padding: var(--spacing-md);
+    border: 1px solid var(--apici-secondary); /* Use secondary for border clarity */
+    background-color: rgba(var(--apici-secondary), 0.1); /* Subtle background */
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 1rem;
+    margin: var(--spacing-xl) auto;
+    max-width: 400px;
 }
