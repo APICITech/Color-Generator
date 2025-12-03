@@ -1,12 +1,10 @@
 /**
  * Color Generator - Enhanced JavaScript
  * @author APIcITechnologies
- * @version 2.0
+ * @version 3.0 (Data Expansion & CSS Variable Consistency)
  * @description A web application that maps emotions to colors,
- * allowing users to select emotions and receive color palettes
- * with descriptions and categories for enhanced user experience.
- * @fileoverview Combines emotion mapping with comprehensive color database
- * including primary colors and variations with detailed descriptions.
+ * featuring robust input handling and full consistency with CSS theming.
+ * @fileoverview Combines an expanded emotion database with clean utility functions.
  */
 
 // Enhanced emotion-to-color mapping with variations
@@ -154,6 +152,38 @@ const emotionDatabase = {
 		{ hex: "#B0E0E6", name: "Powder Blue", description: "Refined calm, evoking elegant softness.", category: "Variation" },
 		{ hex: "#FFD700", name: "Gold", description: "Opulent shine, stimulating visual-tactile luxury.", category: "Variation" },
 		{ hex: "#000000", name: "Black", description: "Timeless elegance, grounding in mysterious depth.", category: "Variation" }
+    ],
+    
+    // NEW EMOTIONS ADDED
+    "curiosity": [
+        { hex: "#17A2B8", name: "Ocean Teal", description: "The deep, unexplored lure of the unknown.", category: "Primary" },
+        { hex: "#8A2BE2", name: "Blue Violet", description: "Intrigue and thoughtful speculation.", category: "Variation" },
+        { hex: "#FFD700", name: "Soft Gold", description: "The desire for illumination and discovery.", category: "Variation" },
+        { hex: "#B0C4DE", name: "Light Steel Blue", description: "Cool, calm observation and probing.", category: "Variation" }
+    ],
+    "envy": [
+        { hex: "#50C878", name: "Emerald Green", description: "Sharp, possessive focus on what others have.", category: "Primary" },
+        { hex: "#7CFC00", name: "Lawn Green", description: "A sickly, potent desire for acquisition.", category: "Variation" },
+        { hex: "#808000", name: "Olive Drab", description: "Resentment, bitterness, and obsession.", category: "Variation" },
+        { hex: "#9370DB", name: "Medium Purple", description: "The consuming depth of longing.", category: "Variation" }
+    ],
+    "nostalgia": [
+        { hex: "#B39EB5", name: "Periwinkle Grey", description: "Sweet, hazy reflection on the past.", category: "Primary" },
+        { hex: "#FFB6C1", name: "Light Pink", description: "Warm, fond memories of affection.", category: "Variation" },
+        { hex: "#D2B48C", name: "Khaki Tan", description: "Earthy, comforting sense of home and time passed.", category: "Variation" },
+        { hex: "#E0FFFF", name: "Light Cyan", description: "The clear, wistful distance of memory.", category: "Variation" }
+    ],
+    "relief": [
+        { hex: "#3CB371", name: "Medium Sea Green", description: "The smooth, clean letting go of tension.", category: "Primary" },
+        { hex: "#ADD8E6", name: "Light Blue", description: "A cooling sense of safety and released worry.", category: "Variation" },
+        { hex: "#90EE90", name: "Light Green", description: "Fresh, healthy restoration after difficulty.", category: "Variation" },
+        { hex: "#F5FFFA", name: "Mint Cream", description: "Pure, light, and airy freedom from burden.", category: "Variation" }
+    ],
+    "awe": [
+        { hex: "#6A5ACD", name: "Slate Blue", description: "The profound depth and majesty of inspiration.", category: "Primary" },
+        { hex: "#4B0082", name: "Indigo", description: "Mystical wonder and humbling immensity.", category: "Variation" },
+        { hex: "#FFFFFF", name: "Pure White", description: "Stark clarity and breathtaking realization.", category: "Variation" },
+        { hex: "#708090", name: "Slate Gray", description: "Silent, respectful admiration.", category: "Variation" }
     ]
 };
 
@@ -161,11 +191,11 @@ const emotionDatabase = {
 const emotionSynonyms = {
     // Happy variations
     "joyful": "happy", "cheerful": "happy", "excited": "happy", "elated": "happy", "euphoric": "happy",
-    "blissful": "joy", "delighted": "joy", "jubilant": "joy",
+    "blissful": "happy", "delighted": "happy", "jubilant": "happy", "joy": "happy",
     
     // Calm variations
-    "peaceful": "calm", "tranquil": "calm", "serene": "serenity", "relaxed": "calm", "zen": "calm",
-    "meditation": "serenity", "mindful": "serenity",
+    "peaceful": "calm", "tranquil": "calm", "serene": "calm", "relaxed": "calm", "zen": "calm",
+    "meditation": "calm", "mindful": "calm", "serenity": "calm",
     
     // Love variations
     "romance": "love", "affection": "love", "adoration": "love", "devotion": "love",
@@ -189,7 +219,14 @@ const emotionSynonyms = {
     "brave": "courage", "bold": "courage", "fearless": "courage", "strength": "courage", "heroic": "courage",
     
     // Creative variations
-    "artistic": "creativity", "imaginative": "creativity", "innovative": "creativity", "inspired": "creativity"
+    "artistic": "creativity", "imaginative": "creativity", "innovative": "creativity", "inspired": "creativity",
+    
+    // NEW SYNONYMS ADDED
+    "inquisitive": "curiosity", "puzzled": "curiosity", "wondering": "curiosity",
+    "jealous": "envy", "covetous": "envy", "bitter": "envy",
+    "reminiscence": "nostalgia", "homesick": "nostalgia", "wistful": "nostalgia",
+    "comforted": "relief", "unburdened": "relief", "easement": "relief",
+    "wonder": "awe", "sublime": "awe", "venerate": "awe"
 };
 
 // Get DOM elements
@@ -244,68 +281,95 @@ function handleInputChange() {
     // Clear previous results if input is empty
     if (!input) {
         resultContainer.innerHTML = '';
+        // Use CSS variable for default border color
+        feelingInput.style.borderColor = 'var(--color-gray)'; 
         return;
     }
     
     // Visual feedback - change border color if emotion is recognized
     const normalizedEmotion = normalizeEmotion(input);
     if (emotionDatabase[normalizedEmotion]) {
-        feelingInput.style.borderColor = '#4CAF50'; // Green for valid
+        // Use the primary brand color for recognized emotion
+        feelingInput.style.borderColor = 'var(--apici-primary)'; 
     } else {
-        feelingInput.style.borderColor = '#ddd'; // Default
+        // Use default color if not recognized
+        feelingInput.style.borderColor = 'var(--color-gray)'; 
     }
 }
 
-// Normalize emotion input (handle synonyms, variations)
-function normalizeEmotion(input) {
-    const cleaned = input.toLowerCase().trim();
-    
-    // Check if it's a direct match
-    if (emotionDatabase[cleaned]) {
-        return cleaned;
+/**
+ * @function normalizeEmotion
+ * @description Processes raw user input to find the most accurate key in the emotionDatabase,
+ * checking direct keys, synonyms, and then performing fuzzy matching (Levenshtein Distance).
+ * @param {string} input - The raw text entered by the user.
+ * @returns {string | null} The normalized emotion key (e.g., 'happy') or null if no match is found.
+ */
+const normalizeEmotion = (input) => {
+    // 1. Clean the input: trim whitespace and convert to lowercase for consistent comparison.
+    const cleanInput = input.trim().toLowerCase();
+
+    if (!cleanInput) return null; // Exit early if input is empty after trimming
+
+    // 2. Direct Match Check
+    if (emotionDatabase[cleanInput]) {
+        return cleanInput;
     }
-    
-    // Check synonyms
-    if (emotionSynonyms[cleaned]) {
-        return emotionSynonyms[cleaned];
+
+    // 3. Synonym Match Check
+    if (emotionSynonyms[cleanInput]) {
+        return emotionSynonyms[cleanInput];
     }
+
+    // 4. Fuzzy Matching Check (Levenshtein Distance)
+    const MAX_LEVENSHTEIN_DISTANCE = 2;
+    let bestMatch = null;
+    let shortestDistance = Infinity;
     
-    // Check for partial matches
-    for (let emotion in emotionDatabase) {
-        if (emotion.includes(cleaned) || cleaned.includes(emotion)) {
-            return emotion;
+    for (const key in emotionDatabase) {
+        const distance = levenshteinDistance(cleanInput, key);
+        
+        if (distance <= MAX_LEVENSHTEIN_DISTANCE && distance < shortestDistance) {
+            shortestDistance = distance;
+            bestMatch = key;
         }
     }
-    
-    return null;
-}
+
+    return bestMatch;
+};
+
 
 // Main color generation function
 /**
  * Generates and displays a color palette based on user emotion input.
- * Validates the emotion input, retrieves corresponding colors from the emotion database,
- * and renders them with descriptions and copy functionality.
  * @function
- * @throws {Error} If emotion database is not accessible
  * @returns {void}
  */
 function generateColor() {
-    const feeling = feelingInput.value.trim();
-	console.log('[Color Generator] User entered emotion:', feeling);
+    const input = feelingInput.value;
+	console.log('[Color Generator] User entered emotion:', input.trim());
     
-    if (!feeling) {
-        showError("Please enter an emotion or feeling.");
+    // Simple validation and early exit if input is clearly too short or empty
+    if (!input || input.trim().length < 2) {
+        showError("Please enter a feeling of at least two letters.");
+        resultContainer.innerHTML = ''; // Clear old results
+        feelingInput.focus();
+        // Use secondary color for alert/invalid feedback
+        feelingInput.style.borderColor = 'var(--apici-secondary)'; 
         return;
     }
-    
-    const normalizedEmotion = normalizeEmotion(feeling);
-    
-    if (normalizedEmotion && emotionDatabase[normalizedEmotion]) {
+
+    const normalizedEmotion = normalizeEmotion(input);
+
+    if (normalizedEmotion) {
+        // Match found: Display the color palette
         displayColorPalette(normalizedEmotion, emotionDatabase[normalizedEmotion]);
-        feelingInput.style.borderColor = '#4CAF50';
+        // Use primary color for success feedback
+        feelingInput.style.borderColor = 'var(--apici-primary)'; 
     } else {
-        displaySuggestions(feeling);
-        feelingInput.style.borderColor = '#ff6b6b';
+        // No match found: Display suggestions
+        displaySuggestions(input);
+        // Use secondary color for 'no direct match/suggestion' feedback
+        feelingInput.style.borderColor = 'var(--apici-secondary)';
     }
 }
 
@@ -398,14 +462,14 @@ function getSuggestions(input) {
     for (let emotion of allEmotions) {
         if (emotion.includes(input.toLowerCase()) || 
             input.toLowerCase().includes(emotion) ||
-            levenshteinDistance(input.toLowerCase(), emotion) <= 2) {
+            levenshteinDistance(input.toLowerCase(), emotion) <= 3) {
             suggestions.push(emotion);
         }
     }
     
     // If no similar emotions, return random popular ones
     if (suggestions.length === 0) {
-        const popular = ['happy', 'calm', 'love', 'passion', 'mystery', 'joy'];
+        const popular = ['happy', 'calm', 'love', 'passion', 'mystery', 'creativity'];
         return popular.slice(0, 4);
     }
     
@@ -442,8 +506,10 @@ function capitalizeFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// CLEANUP: Using CSS variables for styling.
 function showError(message) {
-    resultContainer.innerHTML = `<div class="error-message">${message}</div>`;
+    // Injecting style for error message using secondary color variable
+    resultContainer.innerHTML = `<div class="error-message" style="color: var(--apici-secondary); font-weight: 600; text-align: center; margin: var(--spacing-xl) 0;">${message}</div>`;
 }
 
 function addHexCodeCopyListeners() {
@@ -454,14 +520,16 @@ function addHexCodeCopyListeners() {
     });
 }
 
+// CLEANUP: Using CSS variables for the copy feedback box.
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         // Show temporary feedback
         const feedback = document.createElement('div');
         feedback.textContent = 'Copied!';
         feedback.style.position = 'fixed';
-        feedback.style.background = '#4CAF50';
-        feedback.style.color = 'white';
+        // Use primary color and white color variables
+        feedback.style.background = 'var(--apici-primary)'; 
+        feedback.style.color = 'var(--color-white)';
         feedback.style.padding = '8px 16px';
         feedback.style.borderRadius = '4px';
         feedback.style.top = '20px';
@@ -479,11 +547,13 @@ function tryEmotion(emotion) {
     generateColor();
 }
 
+// CLEANUP: Using CSS variable for border reset color.
 function clearAndFocus() {
     feelingInput.value = '';
     feelingInput.focus();
     resultContainer.innerHTML = '';
-    feelingInput.style.borderColor = '#ddd';
+    // Use the gray color variable for resetting the border
+    feelingInput.style.borderColor = 'var(--color-gray)'; 
 }
 
 function copyPalette(emotion) {
